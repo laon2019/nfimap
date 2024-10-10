@@ -164,13 +164,13 @@ export const concertsData = [
     name: "경기대학교 수원캠퍼스 축제",
     location: "경기대학교 수원캠퍼스",
     date: ["2024-09-26(목)"],
-    startTime: "21:30", // todo 시작시간 미정
-    durationMinutes: 30, // todo 공연시간 미정
+    startTime: "22:30",
+    durationMinutes: 60,
     type: "행사",
     performanceType: "출연",
     artists: ["N.Flying", "볼빨간 사춘기"],
     poster: "/image/show/2024/240926_KYONGGI.jpeg",
-    ticketOpen: { date: "2024-09-26", time: "21:30" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-09-26", time: "22:30" },
     ticketLink: "https://www.instagram.com/p/C_2ny4phvjO/?utm_source=ig_web_copy_link",
     lat: "37.299133107759545",
     lng: "127.03630369767532",
@@ -180,13 +180,13 @@ export const concertsData = [
     name: "계명대학교 성서캠퍼스 축제",
     location: "계명대학교 성서캠퍼스",
     date: ["2024-09-27(금)"],
-    startTime: "21:00", // todo 시작시간 미정
-    durationMinutes: 30, // todo 공연시간 미정
+    startTime: "22:00",
+    durationMinutes: 60,
     type: "행사",
     performanceType: "출연",
     artists: ["N.Flying", "TWS", "LIGHTSUM"],
     poster: "/image/show/2024/240927_KMU.png",
-    ticketOpen: { date: "2024-09-27", time: "21:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-09-27", time: "22:00" },
     ticketLink: "https://www.instagram.com/p/C_9y89CvgVI/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     lat: "35.85263028609724",
     lng: "128.48887144744805",
@@ -196,13 +196,13 @@ export const concertsData = [
     name: "70th 백제문화제",
     location: "백제문화단지 주무대",
     date: ["2024-09-28(토)"],
-    startTime: "18:00", // todo 시작시간 미정
-    durationMinutes: 60, // todo 공연시간 미정
+    startTime: "20:15",
+    durationMinutes: 30,
     type: "행사",
     performanceType: "출연",
     artists: ["N.Flying", "이석훈", "오마이걸"],
     poster: "/image/show/2024/240928_BAEKJE.jpg",
-    ticketOpen: { date: "2024-09-28", time: "18:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-09-28", time: "20:15" },
     ticketLink: "https://www.baekjeculturalfestival.kr/",
     lat: "36.307063211463166",
     lng: "126.906619732413",
@@ -225,54 +225,70 @@ export const concertsData = [
   },
   {
     id: 15,
+    name: "한양대학교 ERICA 축제",
+    location: "한양대학교 ERICA",
+    date: ["2024-10-02(수)"],
+    startTime: "22:00",
+    durationMinutes: 60,
+    type: "행사",
+    performanceType: "출연",
+    artists: ["N.Flying", "STAYC", "YELO"],
+    poster: "/image/show/2024/241002_HANYANG_ERICA.png",
+    ticketOpen: { date: "2024-10-02", time: "22:00" },
+    ticketLink: "https://www.instagram.com/p/DAIm4Cfv1QR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    lat: "37.29471852655008",
+    lng: "126.83308329856165",
+  },
+  {
+    id: 16,
     name: "2024 남원 국제드론제전 with 로봇",
     location: "남원종합스포츠타운 주경기장",
     date: ["2024-10-03(목)"],
-    startTime: "19:00", // todo 시작시간 미정
-    durationMinutes: 40, // todo 공연시간 미정
+    startTime: "20:55",
+    durationMinutes: 25,
     type: "행사",
     performanceType: "출연",
     artists: ["N.Flying", "SG워너비", "김태연"],
     poster: "/image/show/2024/241003_DRONE-FESTA.jpg",
-    ticketOpen: { date: "2024-10-03", time: "19:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-10-03", time: "20:55" },
     ticketLink: "https://www.nwexpo.net/",
     lat: "35.43053765386048",
     lng: "127.40357267973333",
   },
   {
-    id: 16,
+    id: 17,
     name: "2024 부산국제록페스티벌",
     location: "삼락생태공원",
     date: ["2024-10-04(금)"],
-    startTime: "11:30", // todo 시작시간 미정
-    durationMinutes: 60, // todo 공연시간 미정
+    startTime: "17:20",
+    durationMinutes: 50,
     type: "페스티벌",
     performanceType: "출연",
     artists: ["N.Flying","KASABIAN", "실리카겔", "이승윤", "글렌체크", "톡식", "이상은", "등"],
     poster: "/image/show/2024/241004_BUSANROCK.jpg",
-    ticketOpen: { date: "2024-07-12", time: "16:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-07-12", time: "16:00" },
     ticketLink: "http://ticket.yes24.com/Perf/49826",
     lat: "35.1691336482258",
     lng: "128.973187787413",
   },
   {
-    id: 17,
+    id: 18,
     name: "고창모양성제 - MZ 업고 뛰어!",
     location: "고창읍성 앞 특설무대",
-    date: ["2024-10-12(토)"], // todo 시작시간 미정
+    date: ["2024-10-12(토)"],
     startTime: "19:00", // todo 시작시간 미정
-    durationMinutes: 60,
+    durationMinutes: 40, // todo 공연 시간 미정
     type: "행사",
     performanceType: "출연",
     artists: ["N.Flying","릴보이", "우디고 차일드"],
     poster: "/image/show/2024/241012_GOCHANG.jpg",
-    ticketOpen: { date: "2024-10-12", time: "19:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-10-12", time: "19:00" },
     ticketLink: "https://www.xn--v52bo3j80dp4c.com/",
     lat: "35.4299197112886",
     lng: "126.704875419417",
   },
   {
-    id: 18,
+    id: 19,
     name: "2024 어썸스테이지 in Seoul",
     location: "연세대학교 대강당",
     date: ["2024-10-13(일)"],
@@ -288,35 +304,35 @@ export const concertsData = [
     lng: "126.93895552892523",
   },
   {
-    id: 19,
+    id: 20,
     name: "그랜드 민트 페스티벌 2024",
     location: "올림픽공원 88잔디마당(Mint Breeze Stage)",
     date: ["2024-10-27(일)"],
-    startTime: "12:00", // todo 시작시간 미정
-    durationMinutes: 60, // todo 공연시간 미정
+    startTime: "18:30",
+    durationMinutes: 60,
     type: "페스티벌",
     performanceType: "출연",
     artists: ["N.Flying", "LUCY", "멜로망스", "짙은", "한로로"],
     poster: "/image/show/2024/241027_GRANDMINT.jpg",
-    ticketOpen: { date: "2024-08-14", time: "18:00" }, // todo 시작시간 미정
+    ticketOpen: { date: "2024-08-14", time: "18:00" },
     ticketLink: "https://tickets.interpark.com/goods/24011661",
     lat: "37.52066503657698",
     lng: "127.1226794866035",
   },
   {
-    id: 20,
-    name: "한양대학교 ERICA 축제",
-    location: "한양대학교 ERICA",
-    date: ["2024-10-02(수)"],
-    startTime: "20:00", // todo 시작시간 미정
-    durationMinutes: 60, // todo 공연시간 미정
-    type: "행사",
+    id: 21,
+    name: "한수원 뮤직 페스티벌 <씨어터> - 경주",
+    location: "경주예술의전당 화랑홀",
+    date: ["2024-11-08(금)"],
+    startTime: "18:00",
+    durationMinutes: 60,
+    type: "페스티벌",
     performanceType: "출연",
-    artists: ["N.Flying", "STAYC", "YELO"],
-    poster: "/image/show/2024/241002_HANYANG_ERICA.png",
-    ticketOpen: { date: "2024-10-02", time: "20:00" }, // todo 시작시간 미정
-    ticketLink: "https://www.instagram.com/p/DAIm4Cfv1QR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    lat: "37.29471852655008",
-    lng: "126.83308329856165",
+    artists: ["N.Flying", "휘인", "FT아일랜드"],
+    poster: "/image/show/2024/241108_KHNP.jpeg",
+    ticketOpen: { date: "2024-10-14", time: "10:00" },
+    ticketLink: "",
+    lat: "35.862576780016084",
+    lng: "129.20616683623265",
   },
 ];
