@@ -64,5 +64,25 @@
   "concert_type_event": "活动",
   "performance_type_solo": "独奏",
   "performance_type_joint": "联合",
-  "performance_type_guest": "客串"
+  "performance_type_guest": "客串",
+  "noInformation": "没有相关信息。",
+  "buttons": {
+    "checkConcertInfo": "查看演出信息",
+    "waitingBookingSchedule": "等待预订时间",
+    "waitingBookingInfo": "等待预订信息",
+    "bookTickets": "预订门票"
+  },
+  "concertDetails": {
+    "title": "演出详情",
+    "basicInfo": "基本信息",
+    "address": "地址",
+    "capacity": "容量",
+    "notes": "备注",
+    "setlist": "曲目列表",
+    "costumes": "演出服装",
+    "seatingLayout": "座位布局图"
+  },
+  "recommendedConcerts": "推荐演唱会",
+  "ticketOpen": "门票开放: (韩国标准时间)",
+  "artists": "艺人"
 }

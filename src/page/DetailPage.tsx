@@ -36,6 +36,7 @@ import { globalConcerts } from "../datas/globalConcerts";
 import { showInfos } from "../datas/showInfos";
 import { globalShowInfos } from "../datas/globalShowInfos";
 import theme from "../util/theme";
+import { useTranslation } from "react-i18next";
 
 interface Concert {
   id: number;
@@ -75,6 +76,7 @@ interface TimeRemaining {
 }
 
 const DetailPage: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const cardBgColor = useColorModeValue("white", "gray.800");
@@ -92,13 +94,13 @@ const DetailPage: React.FC = () => {
   }, []);
 
   if (!id) {
-    return <NotFound content="정보가 없습니다." />;
+    return <NotFound content={t("noInformation")} />;
   }
   const showInfo = allInfos.find((info) => info.id === parseInt(id));
   const concert = allConcerts.find((concert) => concert.id === parseInt(id));
   console.log(showInfo);
   if (!concert) {
-    return <NotFound content="정보가 없습니다." />;
+    return <NotFound content={t("noInformation")} />;
   }
 
   const isEventTodayOrFuture = (dates: string[]): boolean => {
@@ -134,15 +136,15 @@ const DetailPage: React.FC = () => {
     timeRemaining: TimeRemaining | null
   ): string => {
     if (isPastEvent || concert.type === "행사") {
-      return "공연정보 확인";
+      return t("buttons.checkConcertInfo");
     } else if (concert.ticketOpen.date === "0000-00-00") {
-      return "예매 일정 대기 중";
+      return t("buttons.waitingBookingSchedule");
     } else if (concert.ticketLink === "") {
       return timeRemaining
         ? `${timeRemaining.days}일 ${timeRemaining.hours}시간 ${timeRemaining.minutes}분 후`
-        : "예매 정보 대기 중";
+        : t("buttons.waitingBookingInfo");
     } else {
-      return "티켓 예매하기";
+      return t("buttons.bookTickets");
     }
   };
 
@@ -174,171 +176,170 @@ const DetailPage: React.FC = () => {
   const randomUpcomingConcerts = shuffleArray(upcomingConcerts).slice(0, 3);
 
   return (
-    <Box height="calc(100vh - 120px)">
-      <Box p="16px 16px 100px 16px" width="100%" maxWidth="1200px" mx="auto">
-        <Flex direction={{ base: "column", md: "row" }} gap={8} align="stretch">
-          <Flex
-            flex={1}
-            justifyContent="center"
-            alignItems="center"
-            bg={cardBgColor}
-            p={6}
-            borderRadius="lg"
-            boxShadow="md"
-          >
-            <Box maxW={{ base: "100%", md: "400px" }} w="100%">
-              <Image
-                src={concert.poster}
-                alt={concert.name}
-                w="100%"
-                h="auto"
-                p={4}
-                maxH={{ base: "400px", md: "600px" }}
-                objectFit="contain"
+     <Box height="calc(100vh - 120px)">
+        <Box p="16px 16px 100px 16px" width="100%" maxWidth="1200px" mx="auto">
+            <Flex direction={{ base: "column", md: "row" }} gap={8} align="stretch">
+                <Flex
+                flex={1}
+                justifyContent="center"
+                alignItems="center"
+                bg={cardBgColor}
+                p={6}
                 borderRadius="lg"
-                fallbackSrc="/image/nfimap.png"
-              />
-            </Box>
-          </Flex>
+                boxShadow="md"
+            >
+                <Box maxW={{ base: "100%", md: "400px" }} w="100%">
+                    <Image
+                        src={concert.poster}
+                        alt={concert.name}
+                        w="100%"
+                        h="auto"
+                        p={4}
+                        maxH={{ base: "400px", md: "600px" }}
+                        objectFit="contain"
+                        borderRadius="lg"
+                        fallbackSrc="/image/nfimap.png"
+                    />
+                </Box>
+            </Flex>
 
-          <Flex flexDirection="column" justifyContent="space-between" flex={1}>
-            <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
-              <Badge colorScheme="red" fontSize="md" mb={2}>
-                {concert.type}
-              </Badge>
-              <Text fontSize="3xl" fontWeight="bold" mb={4}>
-                {concert.name}
-              </Text>
-
-              <VStack align="start" spacing={3}>
-                <HStack>
-                  <Icon as={MapPinIcon} color="gray.500" />
-                  <Text fontSize="lg">{concert.location}</Text>
-                </HStack>
-                <HStack>
-                  <Icon as={CalendarIcon} color="gray.500" />
-                  <Text fontSize="lg">{concert.date.join(" - ")}</Text>
-                </HStack>
-                <HStack>
-                  <Icon as={TimerIcon} color="gray.500" />
-                  <Text fontSize="lg">
-                    {concert.startTime} (약 {concert.durationMinutes}분)
-                  </Text>
-                </HStack>
-              </VStack>
-            </Box>
-
-            <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
-              <Text fontSize="xl" fontWeight="semibold" mb={3}>
-                출연자
-              </Text>
-              <Flex wrap="wrap" gap={2}>
-                {concert.artists.map((artist, index) => (
-                  <Badge key={index} colorScheme="purple" fontSize="md">
-                    {artist}
-                  </Badge>
-                ))}
-              </Flex>
-            </Box>
-
-            <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
-              <Text fontSize="xl" fontWeight="semibold" mb={3}>
-                {concert.type === "행사" ? "공연 정보" : "예매 정보"}
-              </Text>
-              <Flex flexDirection="column" gap={3}>
-                <Flex>
-                  {concert.type != "행사" && (
-                    <Badge
-                      colorScheme="green"
-                      fontSize="md"
-                      alignItems="center"
-                    >
-                      티켓 오픈: {concert.ticketOpen.date}{" "}
-                      {concert.ticketOpen.time} (한국시간 기준)
+            <Flex flexDirection="column" justifyContent="space-between" flex={1}>
+                <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
+                    <Badge colorScheme="red" fontSize="md" mb={2}>
+                        {concert.type}
                     </Badge>
-                  )}
-                </Flex>
-                <Button
-                  onClick={(e) => handleButtonClick(e, concert, isPastEvent)}
-                  as={Link}
-                  href={concert.ticketLink}
-                  isExternal
-                  colorScheme="blue"
-                  _hover={{ bg: "black", color: "white" }}
-                >
-                  {getButtonText(concert, isPastEvent, timeRemaining)}
-                </Button>
-              </Flex>
-            </Box>
-          </Flex>
+                    <Text fontSize="3xl" fontWeight="bold" mb={4}>
+                        {concert.name}
+                    </Text>
+
+                    <VStack align="start" spacing={3}>
+                        <HStack>
+                            <Icon as={MapPinIcon} color="gray.500" />
+                            <Text fontSize="lg">{concert.location}</Text>
+                        </HStack>
+                        <HStack>
+                            <Icon as={CalendarIcon} color="gray.500" />
+                            <Text fontSize="lg">{concert.date.join(" - ")}</Text>
+                        </HStack>
+                        <HStack>
+                            <Icon as={TimerIcon} color="gray.500" />
+                            <Text fontSize="lg">
+                                {concert.startTime} (약 {concert.durationMinutes}분)
+                            </Text>
+                        </HStack>
+                    </VStack>
+                </Box>
+
+                <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
+                    <Text fontSize="xl" fontWeight="semibold" mb={3}>
+                        {t("artists")}
+                    </Text>
+                    <Flex wrap="wrap" gap={2}>
+                        {concert.artists.map((artist, index) => (
+                            <Badge key={index} colorScheme="purple" fontSize="md">
+                                {artist}
+                            </Badge>
+                        ))}
+                    </Flex>
+                </Box>
+
+                <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="md">
+                    <Text fontSize="xl" fontWeight="semibold" mb={3}>
+                        {concert.type === "행사" ? t("concertDetails.title") : t("ticketOpen")}
+                    </Text>
+                    <Flex flexDirection="column" gap={3}>
+                        <Flex>
+                            {concert.type !== "행사" && (
+                                <Badge
+                                    colorScheme="green"
+                                    fontSize="md"
+                                    alignItems="center"
+                                >
+                                    {concert.ticketOpen.date}{" "}{concert.ticketOpen.time}
+                                </Badge>
+                            )}
+                        </Flex>
+                        <Button
+                            onClick={(e) => handleButtonClick(e, concert, isPastEvent)}
+                            as={Link}
+                            href={concert.ticketLink}
+                            isExternal
+                            colorScheme="blue"
+                            _hover={{ bg: "black", color: "white" }}
+                        >
+                            {getButtonText(concert, isPastEvent, timeRemaining)}
+                        </Button>
+                    </Flex>
+                </Box>
+            </Flex>
         </Flex>
 
         {showInfo && (
-          <Box mt={8}>
-            <Divider mb={4} />
-            <Text fontSize="3xl" fontWeight="bold" mb={4} color="teal.600">
-              공연 상세
-            </Text>
+            <Box mt={8}>
+                <Divider mb={4} />
+                <Text fontSize="3xl" fontWeight="bold" mb={4} color="teal.600">
+                    {t("concertDetails.title")}
+                </Text>
 
-            <VStack spacing={6} align="stretch">
-              {showInfo.address && (
-                <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="lg">
-                  <HStack mb={3}>
-                    <Icon as={InfoIcon} color="blue.600" />
-                    <Text fontSize="xl" fontWeight="bold" color="gray.700">
-                      기본 정보
-                    </Text>
-                  </HStack>
-                  <VStack align="start" spacing={3}>
-                    <Text fontSize="lg" color="gray.800">
-                      <strong>주소</strong>
-                    </Text>
-                    <Text fontSize="lg" color="gray.800">
-                      &nbsp;{"\u2022"} {showInfo.address}
-                    </Text>
-                    {showInfo.capacity && (
-                      <>
-                        <Text fontSize="lg" color="gray.800">
-                          <strong>수용 인원</strong>
-                        </Text>
-                        <Text fontSize="lg" color="gray.800">
-                          &nbsp;{"\u2022"} {showInfo.capacity}
-                        </Text>
-                      </>
+                <VStack spacing={6} align="stretch">
+                    {showInfo.address && (
+                        <Box bg={cardBgColor} p={6} borderRadius="lg" boxShadow="lg">
+                            <HStack mb={3}>
+                                <Icon as={InfoIcon} color="blue.600" />
+                                <Text fontSize="xl" fontWeight="bold" color="gray.700">
+                                    {t("concertDetails.basicInfo")}
+                                </Text>
+                            </HStack>
+                            <VStack align="start" spacing={3}>
+                                <Text fontSize="lg" color="gray.800">
+                                    <strong>{t("concertDetails.address")}</strong>
+                                </Text>
+                                <Text fontSize="lg" color="gray.800">
+                                    &nbsp;{"\u2022"} {showInfo.address}
+                                </Text>
+                                {showInfo.capacity && (
+                                    <>
+                                        <Text fontSize="lg" color="gray.800">
+                                            <strong>{t("concertDetails.capacity")}</strong>
+                                        </Text>
+                                        <Text fontSize="lg" color="gray.800">
+                                            &nbsp;{"\u2022"} {showInfo.capacity}
+                                        </Text>
+                                    </>
+                                )}
+                                {showInfo.note &&
+                                    showInfo.note.length > 0 &&
+                                    showInfo.note[0] !== "" && (
+                                        <>
+                                            <Text fontSize="lg" color="gray.800">
+                                                <strong>{t("concertDetails.notes")}</strong>
+                                                <br />
+                                            </Text>
+                                            {showInfo.note.map((note, index) =>
+                                                note.endsWith(".png") ||
+                                                note.endsWith(".jpg") ||
+                                                note.endsWith(".jpeg") ||
+                                                note.endsWith(".gif") ? (
+                                                    <Image
+                                                        key={index}
+                                                        src={note}
+                                                        alt={`노트 이미지 ${index + 1}`}
+                                                        borderRadius="md"
+                                                        boxShadow="md"
+                                                        objectFit="cover"
+                                                        w="100%"
+                                                    />
+                                                ) : (
+                                                    <Text key={index} fontSize="lg" color="gray.600">
+                                                        &nbsp;{"\u2022"} {note}
+                                                    </Text>
+                                                )
+                                            )}
+                                        </>
+                                    )}
+                            </VStack>
+                        </Box>
                     )}
-                    {showInfo.note &&
-                      showInfo.note.length > 0 &&
-                      showInfo.note[0] !== "" && (
-                        <>
-                          <Text fontSize="lg" color="gray.800">
-                            <strong>비고</strong>
-                            <br />
-                          </Text>
-                          {showInfo.note.map((note, index) =>
-                            note.endsWith(".png") ||
-                            note.endsWith(".jpg") ||
-                            note.endsWith(".jpeg") ||
-                            note.endsWith(".gif") ? (
-                              <Image
-                                key={index}
-                                src={note}
-                                alt={`노트 이미지 ${index + 1}`}
-                                borderRadius="md"
-                                boxShadow="md"
-                                objectFit="cover"
-                                w="100%"
-                              />
-                            ) : (
-                              <Text key={index} fontSize="lg" color="gray.600">
-                                &nbsp;{"\u2022"} {note}
-                              </Text>
-                            )
-                          )}
-                        </>
-                      )}
-                  </VStack>
-                </Box>
-              )}
 
               {showInfo.setlist &&
                 showInfo.setlist.length > 0 &&
@@ -347,7 +348,7 @@ const DetailPage: React.FC = () => {
                     <HStack mb={3}>
                       <Icon as={MusicIcon} color="green.600" />
                       <Text fontSize="xl" fontWeight="bold" color="gray.700">
-                        세트리스트
+                        {t("concertDetails.setlist")}
                       </Text>
                     </HStack>
                     <SimpleGrid columns={1} spacing={2}>
@@ -382,7 +383,7 @@ const DetailPage: React.FC = () => {
                     <HStack mb={3}>
                       <Icon as={CameraIcon} color="purple.600" />
                       <Text fontSize="xl" fontWeight="bold" color="gray.700">
-                        공연 의상
+                        {t("concertDetails.costumes")}
                       </Text>
                     </HStack>
                     <SimpleGrid columns={1} spacing={4}>
@@ -408,7 +409,7 @@ const DetailPage: React.FC = () => {
                     <HStack mb={3}>
                       <Icon as={UsersIcon} color="orange.600" />
                       <Text fontSize="xl" fontWeight="bold" color="gray.700">
-                        좌석 배치도
+                        {t("concertDetails.seatingLayout")}
                       </Text>
                     </HStack>
                     <SimpleGrid columns={1} spacing={4}>
@@ -431,7 +432,7 @@ const DetailPage: React.FC = () => {
         )}
 
         <Text fontSize="2xl" fontWeight="bold" mt={8} mb={4}>
-          추천 콘서트
+          {t("recommendedConcerts")}
         </Text>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} mt={8}>
           {randomUpcomingConcerts.map((concert, index) => {

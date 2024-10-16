@@ -63,5 +63,25 @@
   "concert_type_event": "Event",
   "performance_type_solo": "Solo",
   "performance_type_joint": "Joint",
-  "performance_type_guest": "Guest"
+  "performance_type_guest": "Guest",
+  "noInformation": "No information available.",
+  "buttons": {
+    "checkConcertInfo": "Check Concert Information",
+    "waitingBookingSchedule": "Waiting for Booking Schedule",
+    "waitingBookingInfo": "Waiting for Booking Information",
+    "bookTickets": "Book Tickets"
+  },
+  "concertDetails": {
+    "title": "Concert Details",
+    "basicInfo": "Basic Information",
+    "address": "Address",
+    "capacity": "Capacity",
+    "notes": "Notes",
+    "setlist": "Setlist",
+    "costumes": "Concert Costumes",
+    "seatingLayout": "Seating Layout"
+  },
+  "recommendedConcerts": "Recommended Concerts",
+  "ticketOpen": "Ticket Open: (Korea Standard Time)",
+  "artists": "Artists"
 }

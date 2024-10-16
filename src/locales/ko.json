@@ -64,5 +64,25 @@
   "concert_type_event": "행사",
   "performance_type_solo": "단독",
   "performance_type_joint": "합동",
-  "performance_type_guest": "출연"
+  "performance_type_guest": "출연",
+  "noInformation": "정보가 없습니다.",
+  "buttons": {
+    "checkConcertInfo": "공연정보 확인",
+    "waitingBookingSchedule": "예매 일정 대기 중",
+    "waitingBookingInfo": "예매 정보 대기 중",
+    "bookTickets": "티켓 예매하기"
+  },
+  "concertDetails": {
+    "title": "공연 상세",
+    "basicInfo": "기본 정보",
+    "address": "주소",
+    "capacity": "수용 인원",
+    "notes": "비고",
+    "setlist": "세트리스트",
+    "costumes": "공연 의상",
+    "seatingLayout": "좌석 배치도"
+  },
+  "recommendedConcerts": "추천 콘서트",
+  "ticketOpen": "티켓 오픈: (한국시간 기준)",
+  "artists": "출연자"
 }

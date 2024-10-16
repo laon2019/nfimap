@@ -64,5 +64,25 @@
   "concert_type_event": "イベント",
   "performance_type_solo": "ソロ",
   "performance_type_joint": "合同",
-  "performance_type_guest": "出演"
+  "performance_type_guest": "出演",
+  "noInformation": "情報がありません。",
+  "buttons": {
+    "checkConcertInfo": "コンサート情報確認",
+    "waitingBookingSchedule": "予約スケジュール待ち",
+    "waitingBookingInfo": "予約情報待ち",
+    "bookTickets": "チケットを予約する"
+  },
+  "concertDetails": {
+    "title": "コンサート詳細",
+    "basicInfo": "基本情報",
+    "address": "住所",
+    "capacity": "収容人数",
+    "notes": "備考",
+    "setlist": "セットリスト",
+    "costumes": "コンサート衣装",
+    "seatingLayout": "座席配置図"
+  },
+  "recommendedConcerts": "おすすめコンサート",
+  "ticketOpen": "チケットオープン: (韓国標準時)",
+  "artists": "出演者"
 }
